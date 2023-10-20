@@ -1,0 +1,26 @@
+.text {
+    color: black;
+}
+
+#title {
+    font-size: 30px;
+}
+
+div.box1 {
+    border: 3px solid #000000;
+    padding: 0.5em;
+    margin-bottom: 5px;
+    display: flex;
+}
+
+
+.img {
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.font {
+    
+}
