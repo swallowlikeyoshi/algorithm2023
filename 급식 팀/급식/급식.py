@@ -19,6 +19,3 @@ jsonfile = json.loads(response.text)
 
 
 print(jsonfile['mealServiceDietInfo','row','DDISH_NM'])
-
-
-
