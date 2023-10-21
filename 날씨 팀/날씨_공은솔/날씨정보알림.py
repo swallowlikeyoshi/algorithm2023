@@ -1,6 +1,9 @@
 import requests
-import re, datetime
-import schedule, time
+import re
+import datetime
+import schedule
+import time
+# import는 한 줄에 하나씩 해주는게 좋음!(필수는 아닌데 관례상)
 
 url = "https://www.kma.go.kr/w/rss/dfs/hr1-forecast.do?zone=4157058000"
 
@@ -10,7 +13,6 @@ def get_weather_information():
   wfor = re.findall("<wfKor>(.+)</wfKor>", response.text)[0]
   temp = re.findall("<temp>(.+)</temp>", response.text)[0]
   humi = re.findall("<reh>(.+)</reh>", response.text)[0]
-
   
   # 함수 설계는 완벽하다!
   # 다만 우리가 해야할 것은 인터넷에서 받아온 날씨 정보를 반환해주는 것!
@@ -34,3 +36,6 @@ def get_weather_information():
 #   now = now.strftime("%Y/%n/%d %H:%S")
 #   schedule.run_pending()
 #   time.sleep(2)
+
+if __name__ == "__main__":
+  print(get_weather_information())

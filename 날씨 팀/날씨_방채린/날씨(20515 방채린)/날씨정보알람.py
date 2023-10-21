@@ -1,6 +1,9 @@
 import requests
-import re, datetime
-import schedule, time
+import re
+import datetime
+import schedule
+import time
+# import는 한 줄에 하나씩 해주는게 좋음!(필수는 아닌데 관례상)
 
 url = "https://www.weather.go.kr/w/rss/dfs/hr1-forecast.do?zone=4157025300"
 
@@ -31,3 +34,6 @@ def get_weather_information():
 #     # print(now)
 #     schedule.run_pending()
 #     time.sleep(2)
+
+if __name__ == "__main__":
+  print(get_weather_information())
