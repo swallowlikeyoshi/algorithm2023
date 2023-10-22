@@ -1,15 +1,10 @@
 from flask import Flask, render_template
 from datetime import datetime
 
+import 날씨정보알람
+
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
-
-@app.route('/')
-def index():
-    return render_template('index.html', 
-                           dietInfo = get_diet_info(),
-                           weatherInfo = get_weather_info(),
-                           schoolEventInfo = get_schoolEventInfo() )
 
 def today(): #오늘 날짜를 출력하는 함수.
     return str(datetime.today().date()).replace('-', '')
@@ -20,12 +15,20 @@ def get_diet_info():
     return "급식 정보"
 
 def get_weather_info():
-    # 이하 동문
-    return "날씨 정보"
+    return 날씨정보알람.get_weather_information().replace("\n", "</br>") # 줄바꿈을 적용하려면 "\n" -> "</br>"로 변경해야함!
 
 def get_schoolEventInfo():
     # 이하 동문
     return "학사일정 정보"
+
+
+# 메인 웹 사이트를 반환하는 함수
+@app.route('/')
+def index():
+    return render_template('index.html', 
+                           dietInfo = get_diet_info(),
+                           weatherInfo = get_weather_info(),
+                           schoolEventInfo = get_schoolEventInfo() )
 
 if __name__ == '__main__':
     # 포트 80은 http 기본 포트임. 명시하지 않았을 경우 브라우저는 이 포트를 통해 웹사이트에 접속하려고 시도함.
